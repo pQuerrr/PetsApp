@@ -1,6 +1,9 @@
 package com.example.petsapp.presentation.login
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -32,6 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.petsapp.R
 
+
+
 @Composable
 fun Login(
     viewModel: LoginViewModel = hiltViewModel(),
@@ -47,6 +52,10 @@ fun Login(
     var password by remember{
         mutableStateOf("")
     }
+
+
+
+
 
     //val loginStatus by authViewModel.userLoginStatus.collectAsState()
     var showFailedDialog by remember{
@@ -104,7 +113,8 @@ fun Login(
                     }
 
                     else -> {
-                        Log.d("AAAAA", viewModel.tryLogin(username,password).toString())
+                       viewModel.tryLogin(username, password)
+
                     }
                 }
             },
@@ -112,21 +122,13 @@ fun Login(
             )
         }
     }
-//    when(loginStatus){
-//        is UserLoginStatus.Failure -> {
-//            localContext.showToast("Не удалось((")
-//        }
-//        UserLoginStatus.Succesful -> {
-//            localContext.showToast("Удалось")
-//        }
-//        null -> {
-//
-//        }
-//    }
+
     if (showFailedDialog){
         //Показать диалоговое окно об ошибке
     }
 }
+
+
 
 //Высвечивать текст
 fun Context.showToast(msg: String){

@@ -24,7 +24,6 @@ fun MapHeader() {
 
 @Composable
 fun MapFields() {
-    navBar()
 }
 
 @Composable
@@ -34,8 +33,3 @@ fun MapFooter() {
 
 
 
-@Composable
-fun navBar() {
-
-
-}

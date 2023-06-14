@@ -6,11 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.petsapp.data.repo.IPreferences
+import com.example.petsapp.data.repo.PreferencesImpl
 import com.example.petsapp.utils.Route
 import com.example.petsapp.presentation.login.Login
 import com.example.petsapp.presentation.registration.Registration
 import com.example.petsapp.ui.theme.PetsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.prefs.Preferences
+import javax.inject.Inject
+
+
+
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -29,7 +36,6 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(
                                     Route.Registration.route
                                 )
-
                             }
                         )
                     }

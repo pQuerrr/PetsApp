@@ -1,5 +1,6 @@
 package com.example.petsapp.presentation.registration
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,11 +29,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.petsapp.R
 import com.example.petsapp.presentation.login.DiplomField
 import com.example.petsapp.presentation.login.showToast
-import com.example.petsapp.utils.Route
 
 
 @Composable
@@ -41,6 +40,7 @@ fun Registration(
     onSingUpClick: () -> Unit,
     onRegistrationClick: () -> Unit
 ) {
+
 
     val localContext = LocalContext.current
 
@@ -110,6 +110,7 @@ fun Registration(
                 }
                 else -> {
                     Log.d("AAAAA", viewModel.tryRegister(loginReg,passwordReg,emailReq,usernameReg).toString())
+
                 }
             }
         }
