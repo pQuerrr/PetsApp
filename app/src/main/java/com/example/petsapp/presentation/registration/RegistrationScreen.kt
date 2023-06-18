@@ -38,7 +38,7 @@ import com.example.petsapp.presentation.login.showToast
 fun Registration(
     viewModel: RegistrationViewModel = hiltViewModel(),
     onSingUpClick: () -> Unit,
-    onRegistrationClick: () -> Unit
+    nextScreen: () -> Unit
 ) {
 
 
@@ -109,8 +109,11 @@ fun Registration(
                     localContext.showToast("Введите пароль")
                 }
                 else -> {
-                    Log.d("AAAAA", viewModel.tryRegister(loginReg,passwordReg,emailReq,usernameReg).toString())
-
+                   viewModel.tryRegister(loginReg,passwordReg,emailReq,usernameReg)
+                    viewModel.getToken()
+                    if (!viewModel.tokenState.value.isNullOrEmpty()) {
+                        nextScreen()
+                    }
                 }
             }
         }

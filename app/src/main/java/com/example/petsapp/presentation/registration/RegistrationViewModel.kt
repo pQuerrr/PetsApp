@@ -32,4 +32,12 @@ class RegistrationViewModel @Inject constructor(
     fun setToken(token: String){
        viewModelScope.launch { preferences.setToken(token) }
     }
+
+    val tokenState = mutableStateOf<String?>(null)
+
+   fun getToken() {
+        viewModelScope.launch {
+            tokenState.value = preferences.getToken()
+        }
+    }
 }

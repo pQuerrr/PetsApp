@@ -1,5 +1,7 @@
 package com.example.petsapp.data.repo
 
+import android.provider.ContactsContract.Profile
+import com.example.petsapp.presentation.profile.ProfileData
 import com.example.petsapp.utils.Response
 import kotlinx.coroutines.flow.Flow
 
@@ -11,9 +13,13 @@ interface MyRepository {
     ): Flow<Response<String>>
 
     suspend fun tryRegister(
-        login:String,
+        login: String,
         password: String,
         email: String,
         username: String
     ): Flow<Response<String>>
+
+    suspend fun getProfile(
+        token: String
+    ): Flow<Response<ProfileData>>
 }

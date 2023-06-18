@@ -42,13 +42,16 @@ class PreferencesImpl(context: Context) : IPreferences {
             keyStore.load(null)
             keyStore.deleteEntry(MasterKey.DEFAULT_MASTER_KEY_ALIAS)
         } catch (e: Exception) {
-            Log.d("AAA","EncryptedSharedPref:  Error occurred while trying to reset shared pref=$e")
+            Log.d(
+                "AAA",
+                "EncryptedSharedPref:  Error occurred while trying to reset shared pref=$e"
+            )
         }
     }
 
     override suspend fun setToken(id: String?) {
         withContext(Dispatchers.IO) {
-            settings.edit {putString(KEY_TOKEN, id) }
+            settings.edit { putString(KEY_TOKEN, id) }
         }
     }
 

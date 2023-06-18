@@ -6,17 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.petsapp.data.repo.IPreferences
-import com.example.petsapp.data.repo.PreferencesImpl
+import com.example.petsapp.presentation.events.AddEventsScreen
+import com.example.petsapp.presentation.events.EventsScreen
+import com.example.petsapp.presentation.forum.AddForumScreen
+import com.example.petsapp.presentation.forum.ForumScreen
 import com.example.petsapp.utils.Route
 import com.example.petsapp.presentation.login.Login
 import com.example.petsapp.presentation.registration.Registration
+import com.example.petsapp.presentation.map.MapScreen
+import com.example.petsapp.presentation.profile.ProfileScreen
 import com.example.petsapp.ui.theme.PetsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.prefs.Preferences
-import javax.inject.Inject
-
-
 
 
 @AndroidEntryPoint
@@ -26,8 +26,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             PetsAppTheme {
                 val navController = rememberNavController()
+                val toolbarDestinations = listOf(
+                    { navController.navigate(Route.MapScreen.route) },
+                    { navController.navigate(Route.ForumScreen.route) },
+                    { navController.navigate(Route.EventsScreen.route) },
+                    { navController.navigate(Route.ProfileScreen.route) }
+                )
                 NavHost(
                     navController = navController,
+
                     startDestination = Route.LoginScreen.route,
                 ) {
                     composable(route = Route.LoginScreen.route) {
@@ -36,28 +43,67 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(
                                     Route.Registration.route
                                 )
+                            },
+                            nextScreen = {
+                                navController.navigate(
+                                    Route.MapScreen.route
+                                )
                             }
                         )
                     }
-                    composable(route = Route.Registration.route){
+                    composable(route = Route.Registration.route) {
                         Registration(onSingUpClick = {
                             navController.navigate(
                                 Route.LoginScreen.route
                             )
                         },
-                            onRegistrationClick = {
+                            nextScreen = {
                                 navController.navigate(
-                                    Route.LoginScreen.route
+                                    Route.MapScreen.route
                                 )
                             }
                         )
+                    }
+                    composable(route = Route.MapScreen.route) {
+                        MapScreen(
+                            toolbarDestinations = toolbarDestinations
+                        )
+                    }
+                    composable(route = Route.ForumScreen.route) {
+                        ForumScreen(
+                            toolbarDestinations = toolbarDestinations,
+                            AddTopic = {
+                                navController.navigate(
+                                    Route.AddForumScreen.route
+                                )
+                            }
+                        )
+                    }
+                    composable(route = Route.EventsScreen.route) {
+                        EventsScreen(
+                            toolbarDestinations = toolbarDestinations,
+                            AddEventsClick = {
+                                navController.navigate(
+                                    Route.AddEventsScreen.route
+                                )
+                            }
+                        )
+                    }
+                    composable(route = Route.ProfileScreen.route) {
+                        ProfileScreen(
+                            toolbarDestinations = toolbarDestinations
+                        )
+                    }
+                    composable(route = Route.AddEventsScreen.route){
+                        AddEventsScreen()
+                    }
+                    composable(route = Route.AddForumScreen.route){
+                        AddForumScreen()
                     }
                 }
             }
         }
     }
 }
-
-
 
 
