@@ -32,7 +32,7 @@ fun MapScreen(
     ConstraintLayout(
         Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(Color.White)
             .verticalScroll(rememberScrollState())
     ) {
 
@@ -86,7 +86,7 @@ fun MapHeader(modifier: Modifier) {
             text = "Полезная карта",
             fontSize = 31.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color.White,
+            color = Color.Black,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }

@@ -12,6 +12,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -147,11 +149,11 @@ fun RegistrationFields(
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         DiplomField(value = loginReg,
-            label = "Login",
+            label = "Логин",
             placeholder = "Введите логин",
             onValueChange = onLoginChange,
             leadingIcon = {
-                Icon(Icons.Default.Email, contentDescription = "Email")
+                Icon(Icons.Default.Star, contentDescription = "Email")
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next)
         )
@@ -159,7 +161,7 @@ fun RegistrationFields(
         Spacer(modifier = Modifier.height(8.dp))
 
         DiplomField(value = passwordReg,
-            label = "Password",
+            label = "Пароль",
             placeholder = "Введите пароль",
             onValueChange = onPasswordChange,
             visualTransformation = PasswordVisualTransformation(),
@@ -178,11 +180,11 @@ fun RegistrationFields(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next)
         )
         DiplomField(value = usernameReg,
-            label = "Username",
+            label = "Имя пользователя",
             placeholder = "Введите имя пользователя",
             onValueChange = onUsernameChange,
             leadingIcon = {
-                Icon(Icons.Default.Email, contentDescription = "Email")
+                Icon(Icons.Default.Person, contentDescription = "Email")
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next)
         )

@@ -66,13 +66,13 @@ fun ProfileScreen(
         Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .background(color = Color.Black)
+            .background(color = Color.White)
     ) {
         Column(
             Modifier
                 .fillMaxSize()
                 .align(Alignment.TopCenter)
-                .background(color = Color.Black)
+                .background(color = Color.White)
                 .padding(40.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
@@ -100,7 +100,7 @@ fun ProfileHeader() {
             text = "Профиль",
             fontSize = 31.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color.White
+            color = Color.Black
         )
     }
 }
@@ -110,7 +110,7 @@ fun ProfileFields(username: String?, login: String?, email: String?) {
     Column() {
         Box(
             Modifier
-                .border(2.dp, color = Color.White)
+                .border(2.dp, color = Color.Black, CircleShape)
                 .padding(5.dp)
                 .fillMaxWidth()
         ) {
@@ -120,20 +120,20 @@ fun ProfileFields(username: String?, login: String?, email: String?) {
                 Modifier
                     .fillMaxHeight()
                     .padding(),
-                tint = Color.White
+                tint = Color.Black
             )
             Text(
                 text = "$username",
                 Modifier.padding(30.dp,0.dp ,0.dp ,0.dp ),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = Color.White
+                color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
         Box(
             Modifier
-                .border(2.dp, color = Color.White)
+                .border(2.dp, color = Color.Black,CircleShape)
                 .padding(5.dp)
                 .fillMaxWidth()
         ) {
@@ -143,21 +143,21 @@ fun ProfileFields(username: String?, login: String?, email: String?) {
                 Modifier
                     .fillMaxHeight()
                     .padding(),
-                tint = Color.White
+                tint = Color.Black
             )
             Text(
                 text = "$login",
                 Modifier.padding(30.dp,0.dp ,0.dp ,0.dp ),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = Color.White
+                color = Color.Black
             )
         }
 
         Spacer(modifier = Modifier.height(8.dp))
         Box(
             Modifier
-                .border(2.dp, color = Color.White)
+                .border(2.dp, color = Color.Black, CircleShape)
                 .padding(5.dp)
                 .fillMaxWidth()
         ) {
@@ -167,14 +167,14 @@ fun ProfileFields(username: String?, login: String?, email: String?) {
                 Modifier
                     .fillMaxHeight()
                     .padding(),
-                tint = Color.White
+                tint = Color.Black
             )
             Text(
                 text = "$email",
                 Modifier.padding(30.dp,0.dp ,0.dp ,0.dp ),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = Color.White
+                color = Color.Black
             )
         }
     }

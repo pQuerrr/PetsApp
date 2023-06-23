@@ -8,8 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.petsapp.presentation.events.AddEventsScreen
 import com.example.petsapp.presentation.events.EventsScreen
-import com.example.petsapp.presentation.forum.AddForumScreen
 import com.example.petsapp.presentation.forum.ForumScreen
+import com.example.petsapp.presentation.forumMessages.ForumMessagesScreen
 import com.example.petsapp.utils.Route
 import com.example.petsapp.presentation.login.Login
 import com.example.petsapp.presentation.registration.Registration
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                 NavHost(
                     navController = navController,
 
-                    startDestination = Route.LoginScreen.route,
+                    startDestination = Route.EventsScreen.route,
                 ) {
                     composable(route = Route.LoginScreen.route) {
                         Login(
@@ -72,21 +72,12 @@ class MainActivity : ComponentActivity() {
                     composable(route = Route.ForumScreen.route) {
                         ForumScreen(
                             toolbarDestinations = toolbarDestinations,
-                            AddTopic = {
-                                navController.navigate(
-                                    Route.AddForumScreen.route
-                                )
-                            }
+                            onReadThemeClicked = {navController.navigate(Route.ThemeScreen.route)}
                         )
                     }
                     composable(route = Route.EventsScreen.route) {
                         EventsScreen(
-                            toolbarDestinations = toolbarDestinations,
-                            AddEventsClick = {
-                                navController.navigate(
-                                    Route.AddEventsScreen.route
-                                )
-                            }
+                            toolbarDestinations = toolbarDestinations
                         )
                     }
                     composable(route = Route.ProfileScreen.route) {
@@ -94,11 +85,8 @@ class MainActivity : ComponentActivity() {
                             toolbarDestinations = toolbarDestinations
                         )
                     }
-                    composable(route = Route.AddEventsScreen.route){
-                        AddEventsScreen()
-                    }
-                    composable(route = Route.AddForumScreen.route){
-                        AddForumScreen()
+                    composable(route = Route.ThemeScreen.route){
+                        ForumMessagesScreen { navController.popBackStack() }
                     }
                 }
             }
